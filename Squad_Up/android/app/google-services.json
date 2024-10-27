@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "333847671318",
+    "project_id": "squadup-702ba",
+    "storage_bucket": "squadup-702ba.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:333847671318:android:c381fb3fff0e39e341fb37",
+        "android_client_info": {
+          "package_name": "com.example.squad_up"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9dLMF_fs5hUH4pdEkxfEaWeMq-IRdRUc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

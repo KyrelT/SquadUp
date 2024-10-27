@@ -2,17 +2,41 @@ import 'package:flutter/material.dart';
 import 'package:squad_up/components/my_textfield.dart';
 import 'package:squad_up/components/my_button.dart';
 import 'package:squad_up/pages/homeScreen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 
-class loginScreen extends StatelessWidget {
+class loginScreen extends StatefulWidget {
   loginScreen({super.key});
 
+  @override
+  State<loginScreen> createState() => _loginScreenState();
+}
+
+class _loginScreenState extends State<loginScreen> {
   //text editing controllers
-  final usernameController = TextEditingController();
+  final emailController = TextEditingController();
+
   final passwordController = TextEditingController();
 
   //sign user in method
-  void signUserIn() {}
+  void signUserIn() async {
+
+    // show loading circle
+    showDialog(context: context, builder: (context){
+      return const Center(
+        child: CircularProgressIndicator(),
+        );
+      },
+    );
+
+    // try sign in
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailController.text,
+        password: passwordController.text,
+    );
+
+    // pop the loading circle after signing in
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,10 +69,10 @@ class loginScreen extends StatelessWidget {
 
               const SizedBox(height: 25),
 
-              //username textfield
+              //Email textfield
               MyTextfield(
-                controller: usernameController,
-                hintText: 'Username',
+                controller: emailController,
+                hintText: 'Email',
                 obscureText: false,
               ),
 

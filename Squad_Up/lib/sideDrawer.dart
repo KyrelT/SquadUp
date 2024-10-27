@@ -4,6 +4,8 @@ import 'package:squad_up/pages/gameScreen.dart';
 import 'package:squad_up/pages/notificationScreen.dart';
 import 'package:squad_up/pages/FriendScreen.dart';
 import 'package:squad_up/pages/loginScreen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:squad_up/pages/searchScreen.dart';
 
 
 class sideDrawer extends StatefulWidget {
@@ -14,6 +16,13 @@ class sideDrawer extends StatefulWidget {
 }
 
 class _sideDrawerState extends State<sideDrawer> {
+
+  //final user = FirebaseAuth.instance.currentUser!; causing error!!!
+
+  void signUserOut(){
+    FirebaseAuth.instance.signOut();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -25,7 +34,10 @@ class _sideDrawerState extends State<sideDrawer> {
           ListTile(
             leading: Icon(Icons.search),
             title: Text('Search'),
-            onTap: () => null,
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => searchScreen()),
+            ),
           ),
           ListTile(
             leading: Icon(Icons.games),
@@ -62,10 +74,10 @@ class _sideDrawerState extends State<sideDrawer> {
           ListTile(
             leading: Icon(Icons.exit_to_app),
             title: Text('Log Out'),
-            onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => loginScreen()),
-            ),
+            onTap: () {
+              signUserOut();
+              Navigator.push(context,MaterialPageRoute(builder: (context)=>loginScreen()));
+            },
           ),
         ],
       ),

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:squad_up/pages/FriendScreen.dart';
-import 'package:squad_up/pages/ProfileScreen.dart';
-import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:squad_up/pages/messageScreen.dart';
-import 'package:squad_up/sideDrawer.dart';
-import 'package:squad_up/pages/homeScreen.dart';
 import 'package:squad_up/pages/loginScreen.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main(){
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(MyApp());
 }
 
