@@ -3,6 +3,7 @@ import 'package:squad_up/components/my_textfield.dart';
 import 'package:squad_up/components/my_button.dart';
 import 'package:squad_up/pages/homeScreen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:squad_up/services/auth_service.dart';
 
 
 class loginScreen extends StatefulWidget {
@@ -15,11 +16,13 @@ class loginScreen extends StatefulWidget {
 class _loginScreenState extends State<loginScreen> {
   //text editing controllers
   final emailController = TextEditingController();
-
   final passwordController = TextEditingController();
 
   //sign user in method
   void signUserIn() async {
+
+    // auth service
+    final authService = AuthService();
 
     // show loading circle
     showDialog(context: context, builder: (context){
@@ -28,12 +31,25 @@ class _loginScreenState extends State<loginScreen> {
         );
       },
     );
-
+    
     // try sign in
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: emailController.text,
-        password: passwordController.text,
-    );
+    try {
+      await authService.signInWithEmailPassword(
+        emailController.text,
+        passwordController.text,
+      );
+    }
+    
+    // catch any errors
+    catch (e) {
+      showDialog(
+        context: context,
+        builder: (context) =>
+            AlertDialog(
+              title: Text(e.toString()),
+            ),
+      );
+    }
 
     // pop the loading circle after signing in
   }

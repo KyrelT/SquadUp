@@ -15,6 +15,7 @@ class homeScreen extends StatefulWidget {
 class _homeScreenState extends State<homeScreen> {
   int pageIndex = 0;
 
+
   List<Widget> widgetList = [
     homeContent(),
     searchScreen(),

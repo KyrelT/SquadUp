@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:squad_up/pages/loginScreen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
+import 'package:squad_up/pages/authPage.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,7 +26,7 @@ class _MyAppState extends State<MyApp> {
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: loginScreen(),
+      home: const AuthPage(),
     );
   }
 }
