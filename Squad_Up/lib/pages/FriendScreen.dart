@@ -17,6 +17,7 @@ class FriendScreen extends StatelessWidget {
         backgroundColor: Colors.grey.shade400,
         appBar: AppBar(
           title: const Text("Friends"),
+          backgroundColor: Colors.black38,
         ),
       body: _buildUserList(),
     );
@@ -57,6 +58,7 @@ class FriendScreen extends StatelessWidget {
             context,
             MaterialPageRoute(builder: (context) => ChatPage(
               receiverEmail: userData["email"],
+              receiverID: userData["uid"],
             ),
             ),
           );

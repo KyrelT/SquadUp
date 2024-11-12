@@ -4,7 +4,9 @@ class MyButton extends StatelessWidget {
 
   final Function()? onTap;
 
-  const MyButton({super.key, required this.onTap});
+  final String text;
+
+  const MyButton({super.key,required this.text, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -17,15 +19,8 @@ class MyButton extends StatelessWidget {
           color: Colors.white38,
           borderRadius: BorderRadius.circular(8),
         ),
-        child: const Center(
-          child: Text(
-            "Sign In",
-            style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-              fontSize: 18,
-            ),
-          ),
+        child: Center(
+          child: Text(text,style: TextStyle(color:Colors.white,fontSize:18)),
         ),
       ),
     );
